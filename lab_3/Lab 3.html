@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sodbileg Ganbat Lab 3</title>
+  
+<style>
+  body {
+    margin: 0;
+  }
+
+  .wrapper {
+    width: 60%;
+    height: 100vh;
+    background: grey;
+    margin: 0 auto;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+  }
+
+  .head a,
+  .head {
+    margin: 0;
+    padding: 0;
+  }
+
+  .second_container {
+    background: pink;
+    height: 150px;
+    text-align: center;
+    line-height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .break {
+    flex-basis: 100%;
+    width: 0;
+  }
+
+  .textbox {
+    height: 100px;
+    width: 350px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .red {
+    background: red;
+    cursor: pointer;
+  }
+
+  .second {
+    background: lightblue;
+  }
+</style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="head" id="start">
+      <h1> Sample Header </h1>
+      <a href="#"> anchor tag to nowhere </a>
+    </div>
+    
+    <div class="second_container">
+      <div class="interior">
+        hello
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="red textbox">
+        Click me I'm great
+      </div>
+
+      <div class="red textbox"> </div>
+      
+      <div class="break"> </div>
+
+      <div class="second textbox">
+        <p>
+          World #2
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let element = document.getElementsByClassName("red")[0];
+    const string = "click me I'm great";
+    element.innerHTML = string;
+
+    element.addEventListener('click', (e) => {
+      if (element.innerHTML !== string) {
+        element.innerHTML = string;
+      } else {
+        element.innerHTML = '';
+      }
+    });
+  </script>
+</body>
+
+</html>
