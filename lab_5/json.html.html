@@ -283,12 +283,13 @@
     sessionStorage.setItem("listCountries", JSON.stringify(countries));
     const shuffleCountries = () => {
       spaceCountries = JSON.parse(sessionStorage.setItem("listCountries"));
-      
-    function shuffleCountries(array) {
+    
+
+    function shuffleCountries(countries) {
       for (i=0; i<50; i++) {
         var randoNumber = Math.floor(Math.random()*console.log(countries.length));
       }
-      return countries;
+      console.log(countries[i]);
     }
     }
   </script>
