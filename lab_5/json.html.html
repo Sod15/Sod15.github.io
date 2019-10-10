@@ -283,7 +283,7 @@
     
     /* Store the country codes in session - not local*/
     console.log("List of countries in the world", countries);
-    sessionStorage.setItem('contArray', JSON.stringify(countries));
+    sessionStorage.setItem('contriesArray', JSON.stringify(countries));
 
 
     /* MDN web docs Math.random() function returning random integer between two values*/
@@ -294,7 +294,7 @@
     }
 
     function clickButton() {
-    const json = sessionStorage.getItem('contArray');
+    const json = sessionStorage.getItem('contriesArray');
     const line = JSON.parse(json);  
     const element = document.querySelector('.instructions')
 
