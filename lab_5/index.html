@@ -284,8 +284,8 @@
     
     /* Stores users session of country codes */
     console.log("List of countries in the world",countries);
-    let country_list = document.getElementId('country_catalog');
-    sessionStorage.setItem('country_array', JSON.stringify(countries));
+    let country_list = document.getElementById('country_catalog');
+    let stored_ss = sessionStorage.setItem('country_array', JSON.stringify(countries));
     
     /* Function that retrieves the users previously stored session, parses the text into a JS object, and outputs a randomized list of 50 countries*/
     function clickButton() 
@@ -298,12 +298,16 @@
 
       /* for loop that randomizes the selection of the 50 countries and splices/removes duplicates*/
       for (let i=0; i<50; i++) {
+        let minimum =Math.ceil(min);
+        let maximum =Math.floor(max);
         let randomInt = Math.floor(Math.random()*(maximum - minimum + 1) ) << 0;
-        instructions += "<li>" +mainList[randomInt] + "</li>";
+        let list1 = document.createElement('li')
+        country_catalog += "<li>" +mainList[randomInt] + "</li>";
         mainList.splice (randomInt,1);
-      }
+        country_list += "<ol"
     }
-    return console.log(countries_list)
+    return console.log(stored_ss)
+    }
 
   </script>
 </body>
