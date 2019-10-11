@@ -285,7 +285,6 @@
     console.log("List of countries in the world", countries);
     sessionStorage.setItem('contriesArray', JSON.stringify(countries));
 
-
     /* MDN web docs Math.random() function returning random integer between two values*/
     function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -294,6 +293,7 @@
     }
 
     function clickButton() {
+    /* When assigning a value o a variable using const, it cannot be reassigned a new value*/
     const json = sessionStorage.getItem('contriesArray');
     const line = JSON.parse(json);  
     const element = document.querySelector('.instructions')
@@ -308,6 +308,7 @@
     const intructions = document.querySelector('.instruction');
     instructions.innerHTML = '';
 
+    const para = document.querySelector('p');
     for(let i=0; i<50; i++) {
       const slectNumber = getRandomIntInclusive(0,242);
       let ce = document.createElement("li");
@@ -315,7 +316,6 @@
 
       instructions.appendChild(ce);
     };
-
 
   </script>
 </body>
