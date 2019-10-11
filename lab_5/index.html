@@ -15,7 +15,7 @@
       <button class="button" onclick="clickButton()"> Click Me to Replace List of Countries </button>
       <div class="content">
         <!-- change unordered list to ordered list-->
-        <ol class="instructions" id="country_catalog">
+        <ul class="instructions" id="country_catalog">
           <li>Delete and re-clone the class repository</li>
           <li>Open <span class="code">lab_5_json.html</span> in your browser</li>
           <li>Open your developer tools and look at the logged data</li>
@@ -28,7 +28,7 @@
               <li>Randomize which fifty countries are displayed on load</li>
             </ol>
           </li>
-        </ol>
+        </ul>
       </div>
       <div class="footer"></div>
     </div>
@@ -292,6 +292,9 @@
     {
       const country_text = sessionStorage.getItem('country_array');
       const line = JSON.parse(country_text);
+      country_list.innerHTML = '';
+      let country_order = document.createElement('ol');
+      country_list.appendChild(country_order);
 
       /* for loop that randomizes the selection of the 50 countries and splices/removes duplicates*/
       for (let i=0; i<50; i++) {
