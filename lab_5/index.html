@@ -15,7 +15,7 @@
       <button class="button" onclick="clickButton()"> Click Me to Replace List of Countries </button>
       <div class="content">
         <!-- change unordered list to ordered list-->
-        <ol class="instructions">
+        <ol class="instructions" id="country_catalog">
           <li>Delete and re-clone the class repository</li>
           <li>Open <span class="code">lab_5_json.html</span> in your browser</li>
           <li>Open your developer tools and look at the logged data</li>
@@ -282,29 +282,25 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     
-    /* clickButton function saves user session, retrieves the text from the session, and parses it into an object*/
+    /* Stores users session of country codes */
+    console.log("List of countries in the world",countries);
+    let country_list = document.getElementId('country_catalog');
+    sessionStorage.setItem('country_array', JSON.stringify(countries));
+    
+    /* Function that retrieves the users previously stored session, parses the text into a JS object, and outputs a randomized list of 50 countries*/
     function clickButton() 
     {
-      sessionStorage.setItem('country_array', JSON.stringify(countries));
       const country_text = sessionStorage.getItem('country_array');
       const line = JSON.parse(country_text);
 
-    /* MDN web docs Math.random() function returning random integer between two values*/
-    function getRandomIntInclusive(min, max) 
-    {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(math.random()*(max - min + 1)) + min;
+      /* for loop that randomizes the selection of the 50 countries and splices/removes duplicates*/
+      for (let i=0; i<50; i++) {
+        let randomInt = Math.floor(Math.random()*(maximum - minimum + 1) ) << 0;
+        instructions += "<li>" +mainList[randomInt] + "</li>";
+        mainList.splice (randomInt,1);
+      }
     }
-    
-
-    for(let i=0; i<50; i++) {
-      const slectNumber = getRandomIntInclusive(0,242);
-      // const ce = document.createElement("li");
-      // ce.innerText = nameArray[selectNumber];
-      // instructions.appendChild(ce);
-    }
-    }
+    return console.log(countries_list)
 
   </script>
 </body>
