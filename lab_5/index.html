@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="UTF-8">
 
 <head>
   <title>Test JSON page</title>
@@ -281,45 +282,30 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
     
-    /* Store the country codes in session - not local*/
-    console.log("List of countries in the world", countries);
-    sessionStorage.setItem('contriesArray', JSON.stringify(countries));
+    /* clickButton function saves user session, retrieves the text from the session, and parses it into an object*/
+    function clickButton() 
+    {
+      sessionStorage.setItem('country_array', JSON.stringify(countries));
+      const country_text = sessionStorage.getItem('country_array');
+      const line = JSON.parse(country_text);
 
     /* MDN web docs Math.random() function returning random integer between two values*/
-    function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(math.random()*(max - min + 1)) + min;
+    function getRandomIntInclusive(min, max) 
+    {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(math.random()*(max - min + 1)) + min;
     }
+    
 
-    function clickButton() {
-    /* When assigning a value o a variable using const, it cannot be reassigned a new value*/
-    const json = sessionStorage.getItem('contriesArray');
-    const line = JSON.parse(json);  
-    const element = document.querySelector('.instructions')
-
-
-    const nameArray = list.map((i) => i.name);
-
-
-    const displayArray = [];
-
-
-    const intructions = document.querySelector('.instruction');
-    instructions.innerHTML = '';
-
-    const para = document.querySelector('p');
     for(let i=0; i<50; i++) {
       const slectNumber = getRandomIntInclusive(0,242);
-      let ce = document.createElement("li");
-      ce.innerText = nameArray[selectNumber];
-
-      instructions.appendChild(ce);
-    };
+      // const ce = document.createElement("li");
+      // ce.innerText = nameArray[selectNumber];
+      // instructions.appendChild(ce);
+    }
+    }
 
   </script>
 </body>
-
-
-
 </html>
