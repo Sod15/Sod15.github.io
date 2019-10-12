@@ -285,25 +285,27 @@
     /* Stores users session of country codes */
     console.log("List of countries in the world",countries);
     let country_list = document.getElementById('country_catalog');
-    
+
     /* Function that retrieves the users previously stored session, parses the text into a JS object, and outputs a randomized list of 50 countries*/
-    function clickButton() 
-    {
-      sessionStorage.setItem("country_array", JSON.stringify(countries));
+    function clickButton() {
+    /*arr.map(function callback(currentValue[, index[, array]]){. JSON.stringfy does not work on functions so use replacer (2nd parameter) of JSON stringfy(). Use map to show array or it returns object object instead of its value  */
+      sessionStorage.setItem("country_array", JSON.stringify(countries.map(function(cont) { 
+        return cont.name; 
+        } ), null, 1));
+
       mainList = JSON.parse(sessionStorage.getItem("country_array"));
 
       /* for loop that randomizes the selection of the 50 countries and splices/removes duplicates*/
       country_catalog = "<ol>";
-      for (let i=0; i<50; i++) {
-        let randomInt = Math.floor(Math.random()*(countries.length) ) << 0;
+      for (let i=0; i<50; i+=1) {
+        let randomInt = [Math.floor(Math.random()*(countries.length)-1)];
         let list1 = document.createElement('li');
-        country_catalog += "<li>" +mainList[randomInt] + "</li>";
+        country_catalog += "<li>" + mainList[randomInt] + "</li>";
         mainList.splice (randomInt,1);
     }
     country_catalog += "</ol>";
     document.querySelector('.instructions').innerHTML = country_catalog;
     }
-
   </script>
 </body>
 </html>
