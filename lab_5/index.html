@@ -296,13 +296,15 @@
       // country_list.appendChild(country_order);
 
       /* for loop that randomizes the selection of the 50 countries and splices/removes duplicates*/
+      country_catalog = "<ol>";
       for (let i=0; i<50; i++) {
         let randomInt = Math.floor(Math.random()*(countries.length) ) << 0;
         let list1 = document.createElement('li')
         country_catalog += "<li>" +mainList[randomInt] + "</li>";
         mainList.splice (randomInt,1);
-        country_list += "<ol>"
     }
+    country_catalog += "</ol>";
+    document.querySelector('.instructions').innerHTML = country_catalog;
     }
 
   </script>
