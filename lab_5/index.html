@@ -290,7 +290,7 @@
     /* Function that retrieves the users previously stored session, parses the text into a JS object, and outputs a randomized list of 50 countries*/
     function clickButton() 
     {
-      mainList = JSON.parse(sessionStorage.getItem("country_text"));
+      mainList = JSON.parse(sessionStorage.getItem("country_array"));
       country_list.innerHTML = '';
       let country_order = document.createElement('ol');
       // country_list.appendChild(country_order);
