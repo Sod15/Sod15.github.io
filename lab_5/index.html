@@ -291,20 +291,20 @@
     function clickButton() 
     {
       const country_text = sessionStorage.getItem('country_array');
-      const line = JSON.parse(country_text);
+      mainList = JSON.parse(country_text);
       country_list.innerHTML = '';
       let country_order = document.createElement('ol');
       country_list.appendChild(country_order);
 
       /* for loop that randomizes the selection of the 50 countries and splices/removes duplicates*/
       for (let i=0; i<50; i++) {
-        let minimum =Math.ceil(min);
-        let maximum =Math.floor(max);
-        let randomInt = Math.floor(Math.random()*(maximum - minimum + 1) ) << 0;
+        // let minimum =Math.ceil(min);
+        // let maximum =Math.floor(max);
+        let randomInt = Math.floor(Math.random()*(countries.length) ) << 0;
         let list1 = document.createElement('li')
         country_catalog += "<li>" +mainList[randomInt] + "</li>";
         mainList.splice (randomInt,1);
-        country_list += "<ol"
+        country_list += "<ol>"
     }
     return console.log(stored_ss)
     }
