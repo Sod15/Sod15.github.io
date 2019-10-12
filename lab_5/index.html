@@ -285,21 +285,18 @@
     /* Stores users session of country codes */
     console.log("List of countries in the world",countries);
     let country_list = document.getElementById('country_catalog');
-    let stored_ss = sessionStorage.setItem("country_array", JSON.stringify(countries));
     
     /* Function that retrieves the users previously stored session, parses the text into a JS object, and outputs a randomized list of 50 countries*/
     function clickButton() 
     {
+      sessionStorage.setItem("country_array", JSON.stringify(countries));
       mainList = JSON.parse(sessionStorage.getItem("country_array"));
-      country_list.innerHTML = '';
-      let country_order = document.createElement('ol');
-      // country_list.appendChild(country_order);
 
       /* for loop that randomizes the selection of the 50 countries and splices/removes duplicates*/
       country_catalog = "<ol>";
       for (let i=0; i<50; i++) {
         let randomInt = Math.floor(Math.random()*(countries.length) ) << 0;
-        let list1 = document.createElement('li')
+        let list1 = document.createElement('li');
         country_catalog += "<li>" +mainList[randomInt] + "</li>";
         mainList.splice (randomInt,1);
     }
