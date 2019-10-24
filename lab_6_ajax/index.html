@@ -31,7 +31,7 @@
           
           catalog_str = "<ol>";
 
-            for (let i=0; i<15; i+1) {
+            for (let i=0; i<15; i+1 ) {
               index = getRandomInt(0, data.length-1);
               catalog_str += "<li>" + data[index] + "</li>";
             }
@@ -39,8 +39,8 @@
           catalog_str += "</ol>";
           
           document.querySelector(".content").innerHTML = catalog_str;
-          }); 
-        }
+       });
+    }
   </script>
 </body>
 
