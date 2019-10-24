@@ -26,12 +26,12 @@
         function loadData() {
           fetch('ajax_sample.json')
           .then(res => res.json())
-          .then(data => data.map(c => c.code))
+          .then(data => data.map(c => c.name))
           .then(data=> {
           catalog = "<ol>";
             for (let i=0; i<15; i+1) {
               index = getRandomInt(0, data.length-1);
-              catalog += "<li>" +data[index] + "</li>"
+              catalog += "<li>" + data[index] + "</li>"
             }
           catalog += "</ol>";
           
