@@ -17,25 +17,32 @@
   </div>
   <script>
 
-        function getRandomInt(min, max) {
-          min = Math.ceil(min);
-          max = Math.floor(max);
-          return Math.floor(Math.random() * (max - min)) +min;
-        }
+         function getRandomInt(min, max) {
+           min = Math.ceil(min);
+           max = Math.floor(max);
+           return Math.floor(Math.random() * (max - min)) +min;
+         }
+
+        // function getRandomInt(min, max) {
+        //   return Math.floor(Math.random() * (max - min +1)) +min;
+        // }
 
         function loadData() {
           fetch('ajax_sample.json')
           .then(res => res.json())
           .then(data => data.map(c => c.name))
-          .then(data=> {
-          catalog = "<ol>";
+          .then(data => {
+          
+          catalog_str = "<ol>";
+
             for (let i=0; i<15; i+1) {
               index = getRandomInt(0, data.length-1);
-              catalog += "<li>" + data[index] + "</li>"
+              catalog_str += "<li>" + data[index] + "</li>";
             }
-          catalog += "</ol>";
+
+          catalog_str += "</ol>";
           
-          document.querySelector(".content").innerHTML = catalog;
+          document.querySelector(".content").innerHTML = catalog_str;
           })
         }
           // .then(data => document.querySelector(".content").innerText = data);''
