@@ -23,10 +23,6 @@
            return Math.floor(Math.random() * (max - min)) +min;
          }
 
-        // function getRandomInt(min, max) {
-        //   return Math.floor(Math.random() * (max - min +1)) +min;
-        // }
-
         function loadData() {
           fetch('ajax_sample.json')
           .then(res => res.json())
@@ -43,7 +39,7 @@
           catalog_str += "</ol>";
           
           document.querySelector(".content").innerHTML = catalog_str;
-          })
+          });
         }
           // .then(data => document.querySelector(".content").innerText = data);''
           // include variable inside .then or you get an error. 
