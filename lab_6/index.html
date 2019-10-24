@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">Test AJAX page</div>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="content"></div>
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+
+        function getRandomInt(min, max) {
+          min = Math.ceil(min);
+          max = Math.floor(max);
+          return Math.floor(Math.random() * (max - min)) +min;
+        }
+
+        function loadData() {
+          fetch('ajax_sample.json')
+          .then(res => res.json())
+          .then(data => data.map(c => c.code))
+          .then(data=> {
+          catalog = "<ol>";
+            for (let i=0; i<15; i+1) {
+              index = getRandomInt(0, data.length-1);
+              catalog += "<li>" +data[index] + "</li>"
+            }
+          catalog += "</ol>";
+          
+          document.querySelector(".content").innerHTML = catalog;
+          })
+        }
+          // .then(data => document.querySelector(".content").innerText = data);''
+          // include variable inside .then or you get an error. 
+          // use previously completed lab 5 logic to create function and index. 
+  </script>
+</body>
+
+</html>
