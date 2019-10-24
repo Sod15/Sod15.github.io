@@ -16,29 +16,29 @@
     </div>
   </div>
   <script>
-
-         function getRandomInt(min, max) {
-          min = Math.ceil(min);
-          max = Math.floor(max);
-          return Math.floor(Math.random() * (max - min)) + min;
-         }
-
-        function loadData() {
-          fetch('ajax_sample.json')
-          .then(res => res.json())
-          .then(data => data.map(c => c.name))
-          .then(data => {
+    
+    function getRndInteger(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    } 
+    
+    function loadData() {
+      fetch('ajax_sample.json')
+      .then(res => res.json())
+      .then(data => data.map(c => c.name))
+      .then(data => {
           
-          catalog_str = "<ol>";
+      catalog_str = "<ol>";
 
-            for (let i=0; i<15; i+1 ) {
-              index = getRandomInt(0, data.length-1);
-              catalog_str += "<li>" + data[index] + "</li>";
-            }
+      for (let i=0; i<15;i+=1 ) {
+         index = getRandomInt(0, data.length-1);
+         catalog_str += "<li>" + data[index] + "</li>";
+      }
 
-          catalog_str += "</ol>";
-          
-          document.querySelector(".content").innerHTML = catalog_str;
+      catalog_str += "</ol>";
+      document.querySelector(".content").innerHTML = catalog_str;
+
        });
     }
   </script>
