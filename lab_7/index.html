@@ -16,40 +16,40 @@
     </div>
   </div>
   <script>
+
     function loadData() {
-       fetch('https://api.umd.io/v0/bus/routes')
-       .then(res => res.json())
-       .then(res => res.map(r => r.route_id + ' - ' + r.title))
-       .then(r => {
-         
-         r_list = "<ul>";
-         r.forEach(function(element) {
-           console.log(element);
-           });
-           
-           
-        r_list += "</ul>";
-          
-      document.querySelector(".content").innerHTML = r_list;
-      });
+      fetch('https://api.umd.io/v0/bus/routes')
+      .then(res => res.json())
+      .then(res => {console.log(res); 
+        return res; 
+        })
+        
+      .then(res => {res.map(r => r.route_id + ' - ' + r.title);
+        return res;
+        })
+
+      .then(res => {
+        res_list = "<ul>";
+
+        for(let i=0; i<25; i+=1) {
+          res.push(res[i]);
+          console.log(res[i].title);
+          res_list += "<li>" + res[i].title + "</li>"
+        }
+
+        res_list += "</ul>";
+        document.querySelector(".content").innerHTML = res_list;
+        return res;
+        })
+
+      .then(res => {var nroute = res.find(function(element) {
+        return element.route_id === "105";
+        })
+        
+        document.querySelector(".header").innerHTML = nroute;
+        })
     }
+
   </script>
 </body>
-
 </html>
-
-
-// Find the GET endpoint for your new bus route data source in docs.umd.io (Links to an external site.)
-//     The start of the link will look like https://api.umd.io (Links to an external site.)
-//     It will have more routes than that base path
-//1     Use your new endpoint in the fetch request to GET data into your application
-//2     Add a then statement that logs out your response data and returns it to the next step
-//3     Add a Then statement which makes an array of route data for use and returns
-//4     Add a Then statement that lists bus routes by name and id in an unordered list in the HTML of your page
-//5     Add a Then statement that lets you put the name of a bus route you select from the list on the page.
-//         You will probably need to use a .find function for this. You can find the documentation at MDN.
-//         Change the title "UMD Bus Routes" to "UMD Bus Route [route number] [route name]" using javascript and your retrieved data.
-//         Please do not type the name by hand to solve this.
-//         Pass your response object to your next step
-//     Log your response object out again at the bottom of your then chain.
-//     Extremely Bonus Marks (2, 12/10): Use string matching to edit the title property so that it does not contain the same data as the bus route id.
