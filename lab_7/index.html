@@ -34,7 +34,7 @@
         for(let i=0; i<25; i+=1) {
           res.push(res[i]);
           console.log(res[i].title);
-          res_list += "<li>" "Route:" + res[i].title + "</li>"
+          res_list += "<li> Route: " + res[i].title + "</li>"
         }
 
         res_list += "</ul>";
@@ -46,7 +46,7 @@
         return element.route_id === "105";
         })
         
-        document.querySelector(".header").innerHTML = nroute.route_id;
+        document.querySelector(".header").innerHTML = "UMD Bus Route " + nroute.title;
         })
     }
 
