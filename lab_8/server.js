@@ -45,14 +45,23 @@ app.get('/api', (req, res) => {
   const baseURL = 'https://api.umd.io/v0/courses/list';
   fetch(baseURL)
     .then((r) => r.json())
+
     .then((data) => {
       console.log(data);
       res.send({ data: data });
     })
+
     .catch((err) => {
       console.log(err);
       res.redirect('/error');
     });
+
+    jsonOb.forEach(function (element, index) {
+      if(element[`dept_id`] === `INST`) {
+        console.log(`found`, element)
+      }
+    })
+   
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
