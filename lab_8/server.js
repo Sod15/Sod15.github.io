@@ -46,17 +46,12 @@ app.get('/api', (req, res) => {
   fetch(baseURL)
     .then((r) => r.json())
 
-    .then((r) => {
-      return r.map(c => data);
-    })
-
     .then(data => {
       for(let i=0; i<data[i].dept_id.length; i+=1) {
         if(data[i].dept_id === 'INST') {
           course_list += data[i].dept_id + data[i].name
         }
       }
-      document.querySelector(".content").innerHTML = course_list;
       return data;
     })
 
