@@ -56,11 +56,6 @@ app.get('/api', (req, res) => {
       res.redirect('/error');
     });
 
-    jsonOb.forEach(function (element, index) {
-      if(element[`dept_id`] === `INST`) {
-        console.log(`found`, element)
-      }
-    })
   
 });
 
