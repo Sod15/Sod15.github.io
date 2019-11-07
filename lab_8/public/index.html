@@ -20,13 +20,19 @@
       console.log('fetch'); // confirm code is running on click
       fetch('/api')
         .then(res => res.json())
-        .then(res => {
-          console.log(res); // logging step to check what we got
-          return res;
+
+        .then(res => res.map(c => c.courses))
+
+        .then(couses => {
+          var li = document.createElement("li");
+          for(let i=0; i<courses.length; i+= 1) {
+          li.innerText = courses[i];
+          content.appendChild(li)
+          }
         })
-        .then(res => res.data.map(c => c.route_id))
-        .then(codes => document.querySelector(".content").innerText = codes);
-    }
+        return content
+        }
+      
   </script>
 </body>
 
