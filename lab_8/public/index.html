@@ -24,13 +24,12 @@
         .then(res => res.map(c => c.course_id))
 
         .then(course_id => {
-          console.log('fetch'); // confirm code is running on click
           fetch('/api')
           .then(res => res.json())
           .then(res => res.data.map(c => c.name))
           .then (name => {
-            for(let i=0; i<name.length; i+= 1) {
-              let c_el = document.createElement; i+=1) {
+            for (let i=0; i<name.length; i+= 1) {
+                let c_el = document.createElement("li");
                 var course_list = course.id[i].toString() + ": " + name[i].toString();
                 c_el.innerText = sub;
                 content.appendChild(c_el);
