@@ -17,23 +17,27 @@
   </div>
   <script>
     function loadData() {
+      const content = document.querySelector(".content");
       console.log('fetch'); // confirm code is running on click
       fetch('/api')
         .then(res => res.json())
+        .then(res => res.map(c => c.course_id))
 
-        .then(res => res.map(c => c.courses))
-
-        .then(couses => {
-          var li = document.createElement("li");
-          for(let i=0; i<courses.length; i+= 1) {
-          li.innerText = courses[i];
-          content.appendChild(li)
-          }
-          document.querySelector(".content").innerHTML = courses;
+        .then(course_id => {
+          console.log('fetch'); // confirm code is running on click
+          fetch('/api')
+          .then(res => res.json())
+          .then(res => res.data.map(c => c.name))
+          .then (name => {
+            for(let i=0; i<name.length; i+= 1) {
+              let c_el = document.createElement; i+=1) {
+                var course_list = course.id[i].toString() + ": " + name[i].toString();
+                c_el.innerText = sub;
+                content.appendChild(c_el);
+              }
+          })
         })
-        return content
-        }
-      
+      }
   </script>
 </body>
 

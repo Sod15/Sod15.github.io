@@ -44,15 +44,15 @@ app.use(express.static('public'));
 app.get('/api', (req, res) => {
   const baseURL = 'https://api.umd.io/v0/courses/list';
   fetch(baseURL)
-    .then((r) => r.json())
-
-    .then(data => {
-      for(let i=0; i<data[i].dept_id.length; i+=1) {
-        if(data[i].dept_id === 'INST') {
-          course_list += data[i].dept_id + data[i].name
-        }
-      }
-      return data;
+    .then((r) => {
+      return r.json();
+    })
+    
+    .then((r) => {
+      return r.filter((c) => {
+      if (c.dept_id === "INST")
+        return c.name
+      });
     })
 
     .then((data) => {
